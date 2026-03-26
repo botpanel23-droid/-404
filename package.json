@@ -1,0 +1,16 @@
+{
+  "name": "chalah-void-404",
+  "version": "2.0.0",
+  "description": "WhatsApp Smart Bot by CHALAH VOID 404",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.6.0",
+    "pino": "^8.16.1",
+    "axios": "^1.6.2",
+    "express": "^4.18.2"
+  }
+}
+
