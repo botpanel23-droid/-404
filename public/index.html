@@ -2,23 +2,168 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHALAH VOID 404 - Pairing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0a0a0a; color: #ff0000; font-family: 'Courier New', Courier, monospace; text-align: center; padding-top: 50px; }
-        .container { border: 2px solid #ff0000; display: inline-block; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px #ff0000; }
-        input { background: #1a1a1a; border: 1px solid #ff0000; color: white; padding: 10px; width: 250px; text-align: center; }
-        button { background: #ff0000; color: black; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin-top: 10px; }
-        #codeDisplay { font-size: 30px; margin-top: 20px; letter-spacing: 5px; color: #fff; text-shadow: 0 0 10px #ff0000; }
-        img { width: 150px; border-radius: 50%; border: 3px solid #ff0000; }
+        :root {
+            --neon-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #0a0a0a;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* පසුබිමේ යන පොඩි ඇනිමේෂන් එකක් */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255,0,0,0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .container {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+            max-width: 350px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover කරද්දී container එක පොඩ්ඩක් ඉස්සෙනවා */
+        .container:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-red);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+        }
+
+        img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-red);
+            padding: 5px;
+            box-shadow: 0 0 15px var(--neon-red);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px var(--neon-red); }
+            50% { box-shadow: 0 0 25px var(--neon-red); }
+            100% { box-shadow: 0 0 10px var(--neon-red); }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            margin-top: 20px;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 16px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--neon-red);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        button {
+            background: var(--neon-red);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #cc0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            transform: scale(1.02);
+        }
+
+        #codeDisplay {
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            min-height: 40px;
+            color: #fff;
+            text-shadow: 0 0 15px var(--neon-red);
+            letter-spacing: 5px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading {
+            font-size: 16px;
+            color: #ffaa00;
+            text-shadow: none;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="https://files.catbox.moe/90yqxb.png" alt="Logo">
-        <h1>تشالاه فويد ٤٠٤</h1>
-        <p>ENTER PHONE NUMBER WITH COUNTRY CODE (947xxxxxxxxx)</p>
-        <input type="text" id="number" placeholder="94712345678"> <br>
-        <button onclick="getPairingCode()">GET PAIRING CODE</button>
+        <h1>CHALAH VOID 404</h1>
+        <p>ENTER PHONE NUMBER WITH COUNTRY CODE</p>
+        
+        <div class="input-group">
+            <input type="number" id="number" placeholder="947xxxxxxxx" autocomplete="off">
+        </div>
+        
+        <button onclick="getPairingCode()">Generate Code</button>
+        
         <div id="codeDisplay"></div>
     </div>
 
@@ -26,13 +171,26 @@
         async function getPairingCode() {
             const num = document.getElementById('number').value;
             const display = document.getElementById('codeDisplay');
-            display.innerText = "GENERATING...";
+            
+            if (!num) {
+                display.innerHTML = "<span style='color:yellow; font-size: 14px;'>PLEASE ENTER NUMBER!</span>";
+                return;
+            }
+
+            display.innerHTML = "<span class="loading">GENERATING...</span>";
+            
             try {
+                // Railway URL එකට කෙලින්ම යොමු වෙන නිසා මෙතන '/' පාවිච්චි කරන්න පුළුවන්
                 const response = await fetch(`/pair?number=${num}`);
                 const data = await response.json();
-                display.innerText = data.code || "ERROR";
+                
+                if (data.code) {
+                    display.innerText = data.code;
+                } else {
+                    display.innerHTML = "<span style='color:orange; font-size: 14px;'>NOT FOUND</span>";
+                }
             } catch (err) {
-                display.innerText = "FAILED TO FETCH";
+                display.innerHTML = "<span style='color:red; font-size: 14px;'>SERVER OFFLINE</span>";
             }
         }
     </script>
